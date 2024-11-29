@@ -1,0 +1,33 @@
+.nav-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+}
+
+.nav-img {
+    height: 50px;
+}
+
+.nav-div > div {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 25px;
+    transition: color 0.3s;
+    padding: 0 20px;
+}
+
+.nav-links:hover {
+    color: #0056b3;
+}
+
+.nav-icon {
+    font-size: 40px;
+    cursor: pointer;
+}

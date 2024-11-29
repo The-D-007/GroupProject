@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+</head>
+<body>
+<div th:replace="~{nav}"></div>
+<div class="container">
+    <h1>Welcome to <i>Sheridan</i></h1>
+    <p>A place of excellence in education and research. Our college offers a wide range of programs and courses designed to help you achieve your academic and career goals.</p>
+    <p>At Sheridan, we are committed to providing a supportive and inclusive environment where students can thrive. Our faculty members are experts in their fields and are dedicated to helping you succeed.</p>
+    <p>To access more detailed information about our programs, faculty, and campus life, please log in.</p>
+    <a th:href="@{/login}"  class="login-link">Login</a>
+</div>
+</body>
+</html>

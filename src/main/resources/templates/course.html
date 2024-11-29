@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Secure Directory Index Page</h1>
+<h2>This is secure area.User can only access this page after authenticating</h2>
+
+<p>Email: <span th:text="${username}">email</span></p>
+<p>Roles:</p>
+<ul>
+  <li th:each="role : ${roles}" th:text="${role}">role</li>
+</ul>
+
+
+<p><a th:href="@{/}" href="#">Main Index Page</a></p>
+<form method="post" th:action="@{/logout}" action="#">
+  <input type="submit" value="LOGOUT">
+</form>
+
+</body>
+</html>
