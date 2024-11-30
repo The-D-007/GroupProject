@@ -23,20 +23,17 @@ public class LoginDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-    {
-      User user = genericDatabase.findUserAccount(username);
-        if(user==null)
-        {
-            System.out.println("user not found="+username);
-            throw new UsernameNotFoundException("user not found="+username);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = genericDatabase.findUserAccount(username);
+        if (user == null) {
+            System.out.println("user not found=" + username);
+            throw new UsernameNotFoundException("user not found=" + username);
         }
         String role = genericDatabase.getRolesById(user.getUserid());
-        List<GrantedAuthority> grantList=new ArrayList<>();
-        if(role != null)
-        {
+        List<GrantedAuthority> grantList = new ArrayList<>();
+        if (role != null) {
 
-                grantList.add(new SimpleGrantedAuthority(role));
+            grantList.add(new SimpleGrantedAuthority(role));
 
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getEncryptedPassword(), grantList);

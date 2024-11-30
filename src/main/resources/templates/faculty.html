@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Collapsible Section Example</title>
+    <title>Title</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/nav.css">
-    <link rel="stylesheet" type="text/css" href="/css/course.css">
+    <link rel="stylesheet" href="/css/course.css">
+    <link rel="stylesheet" href="/css/nav.css">
+
 </head>
 <body>
 <div th:replace="~{nav}"></div>
 <div class="container">
     <div class="about-courses">
-        <div th:each="department : ${departments}" class="each-course">
+        <div th:each="instructor : ${instructors}" class="each-course">
             <h3 class="collapsible-header">
-                <span th:text="${department.departmentName + ' (' + department.getDepartmentID() + ')'}">Department Name</span>
+                <span th:text="${instructor.getInstructorName() + ' (' + instructor.getInstructorDepartment() + ')'}">Department Name</span>
                 <span class="collapsible-btn material-icons">arrow_right</span>
             </h3>
             <div class="collapsible-content">
                 <ul>
-                    <li th:each="course : ${department.courses}">
+                    <li th:each="course : ${instructor.instructorCourses}">
                         <span th:text="${course.courseName + ' (' + course.courseCredits + ')' }">Course Name</span> -
                         <span th:text="${course.courseDescription}">Course Description</span>
-
                     </li>
                 </ul>
             </div>

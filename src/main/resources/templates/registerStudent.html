@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link rel="stylesheet" type="text/css" href="/css/registerStudent.css">
+
+</head>
+<body>
+<div class="registration-container">-
+    <h2>Student Registration</h2>
+    <form method="post" th:action="@{/registerStudent}">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <input type="hidden" id="email" name="email" th:value="${email}">
+
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number" placeholder="Enter your phone number">
+
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" id="date_of_birth" name="date_of_birth">
+
+        <div class="radio-group">
+            <label>Department</label>
+            <div th:each="department : ${departments}">
+                <label>
+                    <input type="radio" name="departmentId" th:value="${department.getDepartmentID()}">
+                    <span th:text="${department.getDepartmentName()}">Department Name</span>
+                </label>
+            </div>
+        </div>
+
+        <label for="gpa">GPA</label>
+        <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4" placeholder="Enter your GPA">
+
+        <input type="submit" value="Register">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+</head>
+<body>
+<div th:replace="~{nav}"></div>
+<div class="container">
+    <div class="profile-header">
+        <span class="material-icons">account_circle</span>
+        <div class="profile-info">
+            <h3 th:text="${Student.getStudentName()}" style="margin-top: 10px;">Student Name</h3>
+            <span th:text="${'Department ID: ' + Student.getStudentDepartmentId()}" style="margin-top: -17px;">Department</span>
+        </div>
+    </div>
+    <div>
+        <h2>Courses Taken</h2>
+        <div class="collapsible-content">
+            <ul>
+                <li th:each="course : ${Student.getCourseList()}">
+                    <div>
+                        <span th:text="${course.courseName + ' (' + course.courseCredits + ')' }">Course Name</span> -
+                        <span th:text="${course.courseDescription}">Course Description</span>
+                    </div>
+                    <form th:action="@{/dropCourse}" method="post" style="margin: 0;">
+                        <input type="hidden" name="courseId" th:value="${course.courseID}">
+                        <input type="submit" class="button" value="Drop">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2>Select Courses</h2>
+        <form th:action="@{/addCourses}" method="post">
+            <div class="checkbox-group">
+                <label th:each="course : ${Student.getAvailableCourseList()}">
+                    <input type="checkbox" name="courseIds" th:value="${course.courseID}">
+                    <span th:text="${course.courseName + ' (' + course.courseCredits + ')'}">Course Name</span>
+                </label>
+            </div>
+            <input type="submit" class="button" value="Add Courses">
+        </form>
+    </div>
+</div>
+</body>
+</html>

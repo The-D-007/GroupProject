@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>Portal</title>
@@ -11,10 +13,19 @@
 <div th:replace="~{nav}"></div>
 <div class="container">
     <h1>Welcome to <i>Sheridan</i></h1>
-    <p>A place of excellence in education and research. Our college offers a wide range of programs and courses designed to help you achieve your academic and career goals.</p>
-    <p>At Sheridan, we are committed to providing a supportive and inclusive environment where students can thrive. Our faculty members are experts in their fields and are dedicated to helping you succeed.</p>
-    <p>To access more detailed information about our programs, faculty, and campus life, please log in.</p>
-    <a th:href="@{/login}"  class="login-link">Login</a>
+    <p>A place of excellence in education and research. Our college offers a wide range of programs and courses designed
+        to help you achieve your academic and career goals.</p>
+    <p>At Sheridan, we are committed to providing a supportive and inclusive environment where students can thrive. Our
+        faculty members are experts in their fields and are dedicated to helping you succeed.</p>
+    <div sec:authorize="!isAuthenticated()">
+        <p>To access more detailed information about our programs, faculty, and campus life, please log in.</p>
+        <a th:href="@{/login}" class="login-link">Login</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <p>Thank you for being a part of Sheridan.</p>
+        <p>See your <a th:href="@{/profile}">profile</a>.</p>
+        <a th:href="@{/logout}" class="login-link">Logout</a>
+    </div>
 </div>
 </body>
 </html>

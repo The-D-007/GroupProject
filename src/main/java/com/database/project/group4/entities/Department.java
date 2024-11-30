@@ -4,16 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.Vector;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "Departments")
 public class Department {
+    @Id
+    @Column(name = "department_id")
     private int departmentID;
+
+    @Column(name = "department_name")
     private String departmentName;
-    private ArrayList<Course> departmentCourses = new ArrayList<>();
-    private ArrayList<Instructor> departmentInstructors = new ArrayList<>();
-    private ArrayList<Student> departmentStudents = new ArrayList<>();
+
+    private List<Course> courses;
 }

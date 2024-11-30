@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-<h1>Welcome to Login Page!</h1>
-
-<h2>Welcome to Ishant's 10th exercise. Please login to the form</h2>
-<form method="post" th:action="@{/login}" action="#">
-    <div th:if="${param.error}" class="error">Invalid user name or password</div>
-    <div th:if="${param.logout}" class="logout">You have been logged out</div>
-    Email : <input type="email" name="username"><br>
-    Password : <input type="password" name="password"><br>
-    <input type="submit" value="LOGIN">
-</form>
-<p><a th:href="@{/register}">Create New Account</a><p>
-
-<p><a href="#" th:href="@{/}">Back To Main Index</a><p>
+<div class="login-container">
+    <h2>Sheridan Login</h2>
+    <form action="#" method="post" th:action="@{/login}">
+        <div class="error" th:if="${param.error}">Invalid user name or password</div>
+        <div class="logout" th:if="${param.logout}">You have been logged out</div>
+        <label for="username">Email</label>
+        <input id="username" name="username" placeholder="Email" required type="email"><br>
+        <label for="password">Password</label>
+        <input id="password" name="password" placeholder="Password" required type="password"><br>
+        <input type="submit" value="LOGIN">
+    </form>
+    <a th:href="@{/registerUser}">Create New Account</a>
+    <a th:href="@{/}">Back To Main Index</a>
+</div>
 </body>
 </html>

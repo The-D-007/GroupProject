@@ -1,14 +1,16 @@
 package com.database.project.group4.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -38,6 +40,11 @@ public class Student {
 
     @Column(name = "department_id")
     private int studentDepartmentId;
+
+    private List<Course> courseList;
+
+    private List<Course> availableCourseList;
+
 
 }
 

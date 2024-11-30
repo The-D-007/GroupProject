@@ -18,35 +18,15 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 public class SecurityConfig {
 
     @Bean
-    PasswordEncoder encoder()
-    {
+    PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception
-    {
-        MvcRequestMatcher.Builder mvc=new MvcRequestMatcher.Builder(introspector);
+    SecurityFilterChain filterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
+        MvcRequestMatcher.Builder mvc = new MvcRequestMatcher.Builder(introspector);
 
-        return http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(mvc.pattern("/course/**")).hasRole("STUDENT")
-                        .requestMatchers(mvc.pattern("/**")).permitAll()
-                        .requestMatchers(mvc.pattern("/css/**")).permitAll()
-                        .requestMatchers(mvc.pattern("/images/**")).permitAll()
-                        .requestMatchers(mvc.pattern("/js/**")).permitAll()
-                        .requestMatchers(mvc.pattern("permissionDenied")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST,"/register")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET,"/register")).permitAll()
-                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
-                        .requestMatchers(mvc.pattern("/**")).denyAll()
-                )
-                .csrf(csrf -> csrf
-                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).disable())
-                .headers(headers -> headers.frameOptions(FrameOptionsConfig::disable))
-                .formLogin(form -> form.loginPage("/login").permitAll())
-                .logout(logout -> logout.permitAll())
-                .exceptionHandling(exception -> exception.accessDeniedPage("/permissionDenied"))
-                .build();
+        return http.authorizeHttpRequests(authorize -> authorize.requestMatchers(mvc.pattern("/registerStudent/**")).hasRole("STUDENT").requestMatchers(mvc.pattern("/course/**")).permitAll().requestMatchers(mvc.pattern("/**")).permitAll().requestMatchers(mvc.pattern("/css/**")).permitAll().requestMatchers(mvc.pattern("/images/**")).permitAll().requestMatchers(mvc.pattern("/js/**")).permitAll().requestMatchers(mvc.pattern("error")).permitAll().requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/register")).permitAll().requestMatchers(AntPathRequestMatcher.antMatcher(HttpMethod.GET, "/register")).permitAll().requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll().requestMatchers(mvc.pattern("/**")).denyAll()).csrf(csrf -> csrf.ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).disable()).headers(headers -> headers.frameOptions(FrameOptionsConfig::disable)).formLogin(form -> form.loginPage("/login").permitAll()).logout(logout -> logout.permitAll()).exceptionHandling(exception -> exception.accessDeniedPage("/error")).build();
     }
 
 }

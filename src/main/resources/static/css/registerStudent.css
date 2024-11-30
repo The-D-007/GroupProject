@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.registration-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.registration-container h2 {
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+.registration-container label {
+    display: block;
+    text-align: left;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.registration-container input[type="text"],
+.registration-container input[type="email"],
+.registration-container input[type="date"],
+.registration-container input[type="number"],
+.registration-container input[type="tel"],
+.registration-container select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.registration-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.registration-container input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.radio-group {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.radio-group label {
+    display: block;
+    margin-bottom: 5px;
+}
