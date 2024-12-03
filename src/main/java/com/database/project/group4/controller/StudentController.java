@@ -68,6 +68,7 @@ public class StudentController {
         student1.setStudentEmail(email);
         student1.setStudentDOB(date_of_birth);
         student1.setStudentDepartmentId(departmentId);
+        student1.setStudentPhoneNumber(phone_number);
         student1.setStudentGPA(gpa);
         studentDatabase.createNewStudent(student1);
         return "redirect:/";
